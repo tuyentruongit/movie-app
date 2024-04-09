@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{web/layout/layout-main.html :: layout-main(~{::title},~{},~{::#main-content},~{})}">
+<head>
+  <title>Phim Dài Tập</title>
+
+</head>
+
+<body>
+
+<th:block id="main-content">
+  <!-- List And Background Poster -->
+  <section class="list-background-poster pt-4 d-flex">
+    <div class="container">
+      <div class="row">
+        <!-- list -->
+        <div class="col-2">
+          <th:block th:replace="~{web/fragment/category-list :: category-list}"></th:block>
+        </div>
+        <!-- poster-movie-by-Type -->
+
+        <div class="col-10">
+          <div class="row">
+            <div class="name-page d-flex justify-content-center">
+              <h3>Phim Dài Tập</h3>
+            </div >
+            <div class="name-page d-flex justify-content-center">
+              <hr width="50%">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3" th:each="movie : ${seriesMovieTop}">
+              <div class="movie-hot-by-Type">
+                <a class="text-decoration-none text-reset" th:href="@{phim/{id}/{slug} (id= ${movie.id} , slug=${movie.slug})}">
+                  <img class="poster-Movie rounded overflow-hidden w-100" th:src="${movie.poster}" alt="">
+                  <div class="infomation-movie pt-3">
+                    <p class="title-movie"><th:block th:text="${movie.title}"></th:block></p>
+                    <p class="mb-6"><th:block th:text="${movie.relishYear}"></th:block></p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ListMovie -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-7">
+          <div class="row">
+            <h5>Danh Sách Phim Lẻ</h5>
+          </div>
+          <div class="row">
+
+            <div class="col-3" th:each="movie : ${pageData.getContent()}">
+              <th:block th:replace="~{web/fragment/movie :: movieItem(${movie})}"></th:block>
+            </div>
+          </div>
+
+          <!--                    Chọn trang-->
+          <div class="row">
+            <div class="number-Page d-flex justify-content-center mt-4" th:if="${pageData.getTotalPages()>1}">
+              <nav aria-label="...">
+                <ul class="pagination">
+                  <li class="page-item " th:classappend="${currentPage==1}?'disabled':''">
+                    <a class="page-link" th:href="@{/phim-chieu-rap (page=${currentPage - 1})}">Previous</a>
+                  </li>
+                  <li class="page-item " aria-current="page"
+                      th:each="number : ${#numbers.sequence(1,pageData.getTotalPages())}"
+                      th:classappend="${currentPage==number}?'active':''">
+                    <a th:href="@{/phim-chieu-rap (page=${number})}" class="page-link"><th:block th:text="${number}"></th:block> </a>
+                  </li>
+                  <li class="page-item"  th:classappend="${currentPage == pageData.getTotalPages()}?'disabled':''">
+                    <a class="page-link" th:href="@{/phim-chieu-rap (page=${currentPage+1})}">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="row">
+            <h5 class="ms-2">Phim Đề Xuất</h5>
+          </div>
+          <div class="recomment-movie mb-5" th:each="movie : ${movieSuggestions}">
+            <div class="row" >
+              <a class="text-reset text-decoration-none d-flex" th:href="@{phim/{id}/{slug} (id= ${movie.id} , slug=${movie.slug})}">
+                <div class="col-5">
+                  <div class="image-movie ms-1 my-1 ">
+                    <img class="rounded overflow-hidden w-100" th:src="${movie.poster}"  alt="">
+                  </div>
+                </div>
+                <div class="col-7">
+                  <div class="title-movie ms-2">
+                    <h6 class="title-movie"><th:block th:text="${movie.title}"></th:block></h6>
+                    <span><th:block th:text="${movie.rating}"></th:block> <i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
+                    <p><th:block th:text="${movie.relishYear}"></th:block></p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</th:block>
+
+
+
+</body>
+</html>

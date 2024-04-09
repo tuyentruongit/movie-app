@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{web/layout/layout-main.html :: layout-main(~{::title},~{},~{::#main-content},~{})}">
+<head>
+    <title>Tin Tức</title>
+</head>
+<body>
+<th:block id="main-content">
+    <!-- List And Background Poster -->
+    <section class="list-background-poster pt-4 d-flex">
+        <div class="container">
+            <div class="row">
+                <!-- list -->
+                <div class="col-2">
+                    <th:block th:replace="~{web/fragment/category-list :: category-list}"></th:block>
+                </div>
+                <!-- Tin tức nổi bật -->
+                <div class="col-10">
+                    <div class="row">
+                        <div class="name-page d-flex justify-content-center">
+                            <h3>Tin Tức</h3>
+                        </div >
+                        <div class="name-page d-flex justify-content-center">
+                            <hr width="50%">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 " th:each="news : ${firstSublist}">
+                            <!-- tin tức nổi bật -->
+                            <div class="featured-news w-100">
+                                <a class="text-decoration-none text-reset" th:href="@{/tin-tuc/{id}/{slug} (id=${news.id} ,slug = ${news.slug})}">
+                                    <img style="height: 250px" class="img-first-blog rounded overflow-hidden w-100" th:src="${news.thumBail}" alt="">
+                                    <div class="news-title">
+                                        <h6><th:block th:text="${news.title}"></th:block> </h6>
+                                    </div>
+                                    <div class="news-author">
+                                        <span><th:block th:text="${news.user.name}"></th:block></span>
+                                    </div>
+                                    <div class="news-publish">
+                                        <span><th:block th:text="${news.publishedAt}"></th:block></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Danh sách tin tức -->
+    <section class="py-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-10">
+                    <div class="row">
+                        <div class="py-2">
+                            <h4 class="">Danh sác tin tức</h4>
+                        </div>
+                    </div>
+                    <div class="row" th:each="news : ${secondSublist}">
+                        <a class="d-flex text-decoration-none text-reset" th:href="@{/tin-tuc/{id}/{slug} (id=${news.id} ,slug = ${news.slug})}">
+                            <div class="col-1">
+                                <div class="image-news-list ">
+                                    <img class="rounded overflow-hidden w-100" th:src="${news.thumBail}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-10 px-3">
+                                <h6><th:block th:text="${news.title}"></th:block></h6>
+                                <p><th:block th:text="${news.description}"></th:block></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="number-Page d-flex justify-content-center mt-4" th:if="${pageData.getTotalPages()>1}">
+                    <nav aria-label="...">
+                        <ul class="pagination">
+                            <li class="page-item " th:classappend="${currentPage==1}?'disabled':''">
+                                <a class="page-link" th:href="@{/tin-tuc (page=${currentPage - 1})}">Previous</a>
+                            </li>
+                            <li class="page-item " aria-current="page"
+                                th:each="number : ${#numbers.sequence(1,pageData.getTotalPages())}"
+                                th:classappend="${currentPage==number}?'active':''">
+                                <a th:href="@{/tin-tuc (page=${number})}" class="page-link"><th:block th:text="${number}"></th:block> </a>
+                            </li>
+                            <li class="page-item"  th:classappend="${currentPage == pageData.getTotalPages()}?'disabled':''">
+                                <a class="page-link" th:href="@{/tin-tuc (page=${currentPage+1})}">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+</th:block>
+</body>
+</html>

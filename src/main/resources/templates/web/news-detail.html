@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{web/layout/layout-main.html :: layout-main(~{::title},~{},~{::#main-content},~{})}">
+<head>
+    <title>Chi Tiết Blog</title>
+
+</head>
+<body>
+
+<th:block id="main-content">
+    <!-- List And Background Poster -->
+    <section class="list-background-poster pt-4 d-flex">
+        <div class="container">
+            <div class="row">
+                <!-- list -->
+                <div class="col-2">
+                    <th:block th:replace="~{web/fragment/category-list :: category-list}"></th:block>
+                </div>
+                <!-- chi tiết tin tức  -->
+                <div class="col-7">
+                    <div class="row">
+                        <h4 class="title-news-detail">
+                            <th:block th:text="${blog.title}"></th:block>
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <span class="" style="font-size: 15px">by <th:block th:text="${blog.user.name}"></th:block> on <th:block th:text="${blog.publishedAt}"></th:block>.</span>
+                    </div>
+                    <div class="row">
+                        <span class="py-2" style="font-size: 17px"> <th:block th:text="${blog.description}"></th:block></span>
+                    </div>
+                    <div class="row">
+                        <p> <th:block th:text="${blog.content}"></th:block></p>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="row">
+                        <h5 class="ms-2">Phim Đề Xuất</h5>
+                    </div>
+
+                    <div class="recomment-movie mb-5" th:each="movie : ${top3RatingMovie}" >
+                        <div class="row" >
+                            <a class="text-reset text-decoration-none d-flex" >
+                                <div class="col-5">
+                                    <div class="image-movie ms-1 my-1 ">
+                                        <img class="rounded overflow-hidden w-100" th:src="${movie.poster}"  alt="">
+                                    </div>
+                                </div>
+                                <div class="col-7">
+                                    <div class="title-movie ms-2">
+                                        <h6><th:block th:text="${movie.title}"></th:block></h6>
+                                        <span> <th:block th:text="${movie.rating}"></th:block><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
+                                        <p><th:block th:text="${movie.relishYear}"></th:block></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+</th:block>
+
+</body>
+</html>

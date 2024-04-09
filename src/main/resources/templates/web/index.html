@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+th:replace="~{web/layout/layout-main.html :: layout-main(~{::title},~{},~{::#main-content},~{})}">
+<head>
+    <title>Trang Chủ</title>
+</head>
+<body>
+<th:block id="main-content">
+    <!-- List And Background Poster -->
+    <section class="list-background-poster pt-4 d-flex">
+        <div class="container">
+            <div class="row">
+                <!-- list -->
+                <div class="col-2">
+                    <th:block th:replace="~{web/fragment/category-list :: category-list}"></th:block>
+                </div>
+                <!-- background-poster -->
+
+                <div class="col-10">
+
+                    <div class="row">
+                        <div class="background-poster">
+                            <a class="text-decoration-none text-reset" th:href="@{phim/{id}/{slug} (id= ${posterBackground.id} , slug=${posterBackground.slug}) } ">
+                                <img class="rounded overflow-hidden w-100 " th:src="${posterBackground.poster}" alt="">
+                                <p class="ms-2 pt-3" style="font-size: 20px; font-weight: 450;"><th:block th:text="${posterBackground.title}"></th:block></p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Các Thể Loại phim -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col 2"></div>
+
+                <div class="col-10">
+                    <div class="movieByType pb-5">
+                        <div class="row">
+                            <div class="d-flex justify-content-between">
+                                <h5>Phim Lẻ</h5>
+                                <a class="text-decoration-none text-reset" th:href="@{/phim-le}">Xem thêm</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 " th:each="movieSingle : ${printSingleMovie}">
+                                <th:block th:replace="~{web/fragment/movie :: movieItem(${movieSingle})}"></th:block>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="movieByType">
+                        <div class="row">
+                            <div class="d-flex justify-content-between">
+                                <h5>Phim Dài Tập</h5>
+                                <a class="text-decoration-none text-reset" th:href="@{/series-movie}">Xem thêm</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 " th:each="movie : ${seriesMovie}">
+                                <th:block th:replace="~{web/fragment/movie :: movieItem(${movie})}"></th:block>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="movieByType">
+                        <div class="row">
+                            <div class="d-flex justify-content-between">
+                                <h5>Phim Chiếu Rạp</h5>
+                                <a class="text-decoration-none text-reset" th:href="@{/phim-chieu-rap}">Xem thêm</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 " th:each="movie : ${theatricalMovies}">
+                                <th:block th:replace="~{web/fragment/movie :: movieItem(${movie})}"></th:block>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</th:block>
+</body>
+</html>
