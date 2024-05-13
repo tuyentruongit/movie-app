@@ -16,21 +16,15 @@ In today's digital age, watching movies online has become an indispensable part 
      - Users can leave reviews and comments about the movies they have watched, helping the community have more information to refer to before watching the movie.
 6. **Logout**:
    - This function helps users ensure that their accounts are not accessed without permission, protecting personal information and movie viewing history.
-### Chức năng của Admin:
-1. **Xem lịch chiếu và phim**:
-    - Khách hàng có thể xem lịch chiếu của các phim hiện đang chiếu và sắp tới.
-    - Họ có thể tìm hiểu về các phim, bao gồm tựa đề, thời lượng, diễn viên, và thể loại.
-2. **Mua vé**:
-    - Khách hàng có thể chọn phim và suất chiếu mà họ muốn xem.
-    - Họ có thể chọn ghế ngồi và số lượng vé cần mua.
-      - Mỗi khi chọn ghế sẽ hiển thị phần ghế đã được các khác hàng trước đặt vé và hiển thị các ghế còn trống cho khách hàng lựa chọn.
-      - Mỗi vé được đặt thì hiển thị của ghế đó đã được đặt với những khách hàng tiếp theo.
-      - Hiển thị phần số lượng vé còn lại cho suất chiếu mà khách hàng đã chọn.
-3. **Thanh toán**:
-    - Phần mềm hỗ trợ thanh toán vé trực tuyến qua các phương thức thanh toán an toàn như thẻ tín dụng hoặc ví điện tử.
-    - Họ cũng có tùy chọn thanh toán tại quầy rạp.
-4. **Quản lý thông tin cá nhân**:
-    - Khách hàng có thể cập nhật thông tin cá nhân của họ như tên, địa chỉ, số điện thoại và email.
-    - Họ có quyền xem lịch sử mua vé và thông tin tài khoản của họ.
-5. **Đăng xuất khỏi hệ thống**:
+##  Basic Function For Admin
+1. **View System Overview**:
+    - Administrators can view an overview dashboard, providing a comprehensive view of important system metrics such as number of new registered users, number of most viewed movies, revenue from movie sales , and      more. This helps administrators grasp the operational situation and make strategic decisions.
+2. **User management**:
+    - Administrators can view user lists, edit user information, or lock/unlock user accounts if necessary. This helps ensure a healthy and safe environment for the viewing community.
+3. ***Managing Movies, Episodes****:
+    - This function allows administrators to add, edit or delete movies and episodes. Administrators can update movie information, manage movie status (eg: premiere, currently running, ended), and manage the           content of each episode.
+4. **Managing Actors, Directors, Movie Genres, Countries**:
+    - Administrators can manage detailed information about actors, directors, add or edit movie genres, and movie production countries. This helps users easily search and choose movies according to their                preferences.
+5. **Blog management**:
+   - This function allows administrators to post, edit or delete articles about movie news, movie reviews or user guide articles. This is an effective way to interact and retain users on the system.
 
