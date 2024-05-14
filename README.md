@@ -21,17 +21,30 @@ In today's digital age, watching movies online has become an indispensable part 
 7. **Review** :
      - Users can leave reviews and comments about the movies they have watched, helping the community have more information to refer to before watching the movie.
         ![Hình ảnh](img_ma/craet-update-reviews.png)
-8. **Logout**:
+8. **Blog**
+   - Blog List
+      ![Hình ảnh](img_ma/blog-1.png)
+      ![Hình ảnh](img_ma/blog-2.png)
+10. **Logout**:
    - This function helps users ensure that their accounts are not accessed without permission, protecting personal information and movie viewing history.
 ##  Basic Function For Admin
 1. **View System Overview**:
-    - Administrators can view an overview dashboard, providing a comprehensive view of important system metrics such as number of new registered users, number of most viewed movies, revenue from movie sales , and      more. This helps administrators grasp the operational situation and make strategic decisions.
-2. **User management**:
-    - Administrators can view user lists, edit user information, or lock/unlock user accounts if necessary. This helps ensure a healthy and safe environment for the viewing community.
-3. **Managing Movies, Episodes**:
+    - Admins can view an overview dashboard that provides a comprehensive view of important system metrics such as number of new registered users, number of most viewed movies, and more. This helps administrators       grasp the operating situation.
+       ![Hình ảnh](img_ma/admin-dashboard.png)
+2. **Managing Movies, Episodes**:
     - This function allows administrators to add, edit or delete movies and episodes. Administrators can update movie information, manage movie status (eg: premiere, currently running, ended), and manage the           content of each episode.
-4. **Managing Actors, Directors, Movie Genres, Countries**:
-    - Administrators can manage detailed information about actors, directors, add or edit movie genres, and movie production countries. This helps users easily search and choose movies according to their                preferences.
-5. **Blog management**:
+      - Movie Management
+        ![Hình ảnh](img_ma/manager-movie.png)
+       - Creeate Movies
+        ![Hình ảnh](img_ma/create-movie-admin.png)
+       - movie Detail Role Admin
+        ![Hình ảnh](img_ma/detail-move-admin.png)
+3. **Blog management**:
    - This function allows administrators to post, edit or delete articles about movie news, movie reviews or user guide articles. This is an effective way to interact and retain users on the system.
+     - Blog Management
+     ![Hình ảnh](img_ma/manager-blog.png)
+     - Create Blog
+     ![Hình ảnh](img_ma/create-blog.png)
+4. **Upload Image**
+   ![Hình ảnh](img_ma/upload-image.png)
 
