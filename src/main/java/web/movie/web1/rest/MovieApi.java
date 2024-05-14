@@ -21,7 +21,7 @@ public class MovieApi {
         Movie movie = movieService.createMovie(upsertMovieRequest);
         return new ResponseEntity<>(movie, HttpStatus.CREATED);
     }
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public  ResponseEntity<?> updateMovie (@PathVariable Integer id , @RequestBody UpsertMovieRequest upsertMovieRequest){
         Movie movie = movieService.updateMovie(id,upsertMovieRequest);
         return ResponseEntity.ok(movie);

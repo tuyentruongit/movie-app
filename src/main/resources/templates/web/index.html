@@ -22,7 +22,7 @@ th:replace="~{web/layout/layout-main.html :: layout-main(~{::title},~{},~{::#mai
                     <div class="row">
                         <div class="background-poster">
                             <a class="text-decoration-none text-reset" th:href="@{phim/{id}/{slug} (id= ${posterBackground.id} , slug=${posterBackground.slug}) } ">
-                                <img class="rounded overflow-hidden w-100 " th:src="${posterBackground.poster}" alt="">
+                                <img class="rounded overflow-hidden w-100 " src="https://thegioidienanh.vn/stores/news_dataimages/anhvu/122022/18/18/4817_010.jpg?rt=20221218185358" alt="">
                                 <p class="ms-2 pt-3" style="font-size: 20px; font-weight: 450;"><th:block th:text="${posterBackground.title}"></th:block></p>
                             </a>
                         </div>

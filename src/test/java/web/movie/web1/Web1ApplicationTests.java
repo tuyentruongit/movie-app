@@ -49,7 +49,7 @@ class Web1ApplicationTests {
         Faker faker = new Faker();
         Slugify slugify = Slugify.builder().build();
         Random random = new Random();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
 //             random 1-3 thể loại
             List<Genre > rdgenreList = new ArrayList<>();
             for (int j = 0; j < random.nextInt(3)+1; j++) {
@@ -96,8 +96,8 @@ class Web1ApplicationTests {
                     .rating(faker.number().randomDouble(1,6,10))
                     .movieType(MovieType.values()[random.nextInt(MovieType.values().length)])
                     .status(status)
-                    .createAt(createAt)
-                    .updateAt(createAt)
+                    .createAt(LocalDate.now())
+                    .updateAt(LocalDate.now())
                     .publishedAt(publishAt)
                     .actorList(rdActorList)
                     .directorList(rdDirectorlist)
@@ -113,7 +113,7 @@ class Web1ApplicationTests {
     void createDataUser(){
         Faker faker = new Faker();
         Random random = new Random();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             Date date = faker.date().birthday();
             Instant instant = date.toInstant();
             LocalDate createAt = instant.atZone(ZoneId.systemDefault()).toLocalDate();
@@ -123,8 +123,8 @@ class Web1ApplicationTests {
                     .password(faker.internet().password())
                     .avatar(faker.company().logo())
                     .role(Role.values()[random.nextInt(Role.values().length)])
-                    .createAt(createAt)
-                    .updateAt(createAt)
+                    .createAt(LocalDate.now())
+                    .updateAt(LocalDate.now())
                     .build();
             userRepository.save(user);
         }
@@ -136,7 +136,7 @@ class Web1ApplicationTests {
         List<User> listAdmin = userRepository.findByRole(Role.ROLE_ADMIN);
         Random random = new Random();
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 10; i++) {
             int index = random.nextInt(listAdmin.size());
             User user = listAdmin.get(index);
             String title = faker.book().title();
@@ -155,8 +155,8 @@ class Web1ApplicationTests {
                     .content(faker.lorem().paragraph(30))
                     .thumbnail(faker.company().logo())
                     .status(status)
-                    .createAt(createAt)
-                    .updateAt(createAt)
+                    .createAt(LocalDate.now())
+                    .updateAt(LocalDate.now())
                     .publishedAt(publishAt)
                     .user(user)
                     .build();
@@ -207,6 +207,7 @@ class Web1ApplicationTests {
                     .build();
 
             directorRepository.save(director);
+
         }
 
     }
@@ -302,6 +303,20 @@ class Web1ApplicationTests {
                 episodeRepository.save(episode);
             }
         });
+    }
+
+    // generate link author avatar follow struct : https://placehold.co/200x200?text=[...]
+    public static String generateLinkImage(String str) {
+        return "https://placehold.co/200x200?text=" + str.substring(0, 1).toUpperCase();
+    }
+
+    @Test
+    void abc (){
+        List<Blog> blogList = blogRepository.findAll();
+        for (int i = 0; i < blogList.size(); i++) {
+            blogList.get(i).setThumbnail(generateLinkImage(blogList.get(i).getTitle()));
+            blogRepository.save(blogList.get(i));
+        }
     }
 
 

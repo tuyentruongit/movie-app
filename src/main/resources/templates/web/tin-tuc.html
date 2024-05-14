@@ -30,7 +30,7 @@
                             <!-- tin tức nổi bật -->
                             <div class="featured-news w-100">
                                 <a class="text-decoration-none text-reset" th:href="@{/tin-tuc/{id}/{slug} (id=${news.id} ,slug = ${news.slug})}">
-                                    <img style="height: 250px" class="img-first-blog rounded overflow-hidden w-100" th:src="${news.thumBail}" alt="">
+                                    <img style="height: 250px" class="img-first-blog rounded overflow-hidden w-100" th:src="${news.thumbnail}" alt="">
                                     <div class="news-title">
                                         <h6><th:block th:text="${news.title}"></th:block> </h6>
                                     </div>
@@ -64,7 +64,7 @@
                         <a class="d-flex text-decoration-none text-reset" th:href="@{/tin-tuc/{id}/{slug} (id=${news.id} ,slug = ${news.slug})}">
                             <div class="col-1">
                                 <div class="image-news-list ">
-                                    <img class="rounded overflow-hidden w-100" th:src="${news.thumBail}" alt="">
+                                    <img class="rounded overflow-hidden w-100" th:src="${news.thumbnail}" alt="">
                                 </div>
                             </div>
                             <div class="col-10 px-3">

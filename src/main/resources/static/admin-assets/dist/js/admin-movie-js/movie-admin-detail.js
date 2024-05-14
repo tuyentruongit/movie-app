@@ -55,7 +55,7 @@ btnSave.addEventListener('click' ,(e)=>{
         genreIds : genreList,
         poster : posterMovie.getAttribute("src")
     }
-    axios.put(`/api/admin/movies/${idMovie}`,data)
+    axios.put(`/api/admin/movies/update/${idMovie}`,data)
         .then((res)=>{
             toastr.success("Lưu thành công ");
             setTimeout(() => {
